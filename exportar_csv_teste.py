@@ -13,12 +13,12 @@ for i in range(10):
 	acao = yf.Ticker(CARTEIRA_BRL[i])
 	#dados_historicos = acao.history(start="2015-01-01" , end="2015-02-11")
 	if i==0:
-		dados_historicos = acao.history(start="2011-01-01" , end="2019-12-31")
+		dados_historicos = acao.history(start="2022-01-01" , end="2024-12-31")
 	#	dados_historicos = acao.history(start="2011-01-01" , end="2011-01-31")
 		dados_historicos['tic'] = CARTEIRA_BRL[i] #adiciona a coluna tic
 	#	print(dados_historicos)
 	else:
-		dados_historicos2 = acao.history(start="2011-01-01" , end="2019-12-31")	
+		dados_historicos2 = acao.history(start="2022-01-01" , end="2024-12-31")	
 	#	dados_historicos2 = acao.history(start="2011-01-01" , end="2011-01-31")	
 		dados_historicos2['tic'] = CARTEIRA_BRL[i]
 	#dados_historicos['Date'].dt.date
@@ -63,11 +63,11 @@ print(dados_historicos.index)
 #acoes = yf.download("VALE3.SA PETR4.SA ", start="2010-01-01" , end="2010-01-07")
 #dados_historicos = acoes.history(period="max", group_by='Date')
 
-dados_historicos.to_csv('dados_historicos_inicial.csv')
+dados_historicos.to_csv('dados_historicos_inicial_teste.csv')
 #dados_historicos.to_csv('dados_historicos_inicial.csv', index=None)
 
 #df_train = pd.read_csv("dados_historicos_inicial.csv", sep = ',', parse_dates= ['Date'],encoding='utf-8-sig', usecols= ['Date'],)
-df_train = pd.read_csv("dados_historicos_inicial.csv")
+df_train = pd.read_csv("dados_historicos_inicial_teste.csv")
 
 #df_train['Date'] = pd.to_datetime(df_train['Date']).dt.normalize()
 df_train = df_train.rename(columns={'Date': 'date','High': 'high','Low': 'low','Close': 'close' })# renomeia as colunas
@@ -84,7 +84,7 @@ print("ATE AQUI RODOU")
 
 #df_train.sort_values(by=['date'], inplace=True)
 
-df_train.to_csv('dados_historicos_final.csv', index=None)
+df_train.to_csv('dados_historicos_final_teste.csv', index=None)
 
 print ('Modificado')
 print (df_train['date'])
@@ -92,7 +92,7 @@ print (df_train['date'])
 print (df_train)
 
 
-index_teste = pd.read_csv("dados_historicos_final.csv")
+index_teste = pd.read_csv("dados_historicos_final_teste.csv")
 print ('INDEX')
 print (index_teste.index)
 
